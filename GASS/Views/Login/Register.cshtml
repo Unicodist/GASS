@@ -1,0 +1,41 @@
+﻿@model dbpro1.Models.UserRegisterModel
+<div class="row" style="margin-top: 5%;">
+    <div class="col-md-4"></div>
+    <div class="col-sm-12 col-md-4">
+        <form asp-controller="Login" asp-action="RegAction" autocomplete="off">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="inFName">FirstName</label>
+                        <input id="inFName" type="text" class="form-control" placeholder="FirstName" required name="regFName">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="inLName">LastName</label>
+                        <input id="inLName" type="text" class="form-control" placeholder="LastName" required name="regLName">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputUser">Username</label>
+                <input type="text" class="form-control" id="inputUser" required placeholder="UserName" name="regUsername">
+            </div>
+            <div class="form-group">
+                <label for="inputPassword">Password</label>
+                <input type="password" class="form-control" id="inputPassword" required placeholder="Password" name="regPW">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Password</label>
+                <input type="password" class="form-control" id="confirmPassword" required placeholder="Confirm" name="regConfirm">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">Email</label>
+                <input type="email" class="form-control" id="inputEmail" required placeholder="E-Mail" name="regEmail">
+            </div>
+            <button type="submit" class="btn btn-primary">Sign up</button>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
