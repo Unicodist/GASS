@@ -1,5 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home";
+    if ((string)ViewData["isLogged"] == "true")
+        Layout = "~/Views/Shared/_LoggedIn.cshtml";
 }
 <style>
     #homepage_search {

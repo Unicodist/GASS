@@ -35,8 +35,15 @@ namespace GASS.Controllers
             var stupid = dal.users.Where(x=>x.username.Equals(login.username)).ToList();
             UserModel user = stupid[0];
             HttpContext.Session.SetString("User",JsonConvert.SerializeObject(user));
+            HttpContext.Session.SetString("Logged", "true");
             ViewBag.user = JsonConvert.DeserializeObject<UserModel>(HttpContext.Session.GetString("User"));
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index","Panel");
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.SetString("Logged", "null");
+            HttpContext.Session.SetString("User", "null");
+            return RedirectToAction("Index", "Login");
         }
 
     }

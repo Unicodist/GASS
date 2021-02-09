@@ -122,3 +122,6 @@ C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\staticwebassets\GASS.StaticWebAss
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\GASS.dll
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\GASS.pdb
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\GASS.genruntimeconfig.cache
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoggedIn.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\UserIndex.cshtml.g.cs

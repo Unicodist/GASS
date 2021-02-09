@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using GASS.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace GASS.Controllers
 {
@@ -20,6 +21,8 @@ namespace GASS.Controllers
 
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("Logged") == "true")
+                ViewData["isLogged"] = "true";
             return View();
         }
 

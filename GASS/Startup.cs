@@ -54,7 +54,7 @@ namespace GASS
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Panel}/{action=Index}/{id?}");
             });
         }
     }
