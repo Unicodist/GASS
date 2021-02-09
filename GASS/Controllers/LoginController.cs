@@ -1,10 +1,10 @@
 ﻿using System.Linq;
-using dbpro1.Models;
+using GASS.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace dbpro.Controllers
+namespace GASS.Controllers
 {
     public class LoginController : Controller
     {

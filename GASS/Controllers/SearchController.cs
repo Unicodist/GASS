@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace dbpro1.Controllers
+namespace GASS.Controllers
 {
     public class SearchController : Controller
     {

@@ -1,4 +1,4 @@
-﻿using dbpro1.Models;
+﻿using GASS.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace dbpro1.Models
+namespace GASS.Models
 {
 	public class DataContext : DbContext
 	{
