@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ashish\\source\\repos\\GASS\\GASS\\GASS.csproj": {}
+    "C:\\HtmlFiles\\GASS\\GASS\\GASS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ashish\\source\\repos\\GASS\\GASS\\GASS.csproj": {
+    "C:\\HtmlFiles\\GASS\\GASS\\GASS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ashish\\source\\repos\\GASS\\GASS\\GASS.csproj",
+        "projectUniqueName": "C:\\HtmlFiles\\GASS\\GASS\\GASS.csproj",
         "projectName": "GASS",
-        "projectPath": "C:\\Users\\Ashish\\source\\repos\\GASS\\GASS\\GASS.csproj",
+        "projectPath": "C:\\HtmlFiles\\GASS\\GASS\\GASS.csproj",
         "packagesPath": "C:\\Users\\Ashish\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ashish\\source\\repos\\GASS\\GASS\\obj\\",
+        "outputPath": "C:\\HtmlFiles\\GASS\\GASS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
