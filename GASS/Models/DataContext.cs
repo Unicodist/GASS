@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GASS.Models
 {
-	public class DataContext : DbContext
+	public class GASSDBContext : DbContext
 	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

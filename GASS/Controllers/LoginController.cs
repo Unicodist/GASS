@@ -22,7 +22,7 @@ namespace GASS.Controllers
 
         public IActionResult RegAction(UserRegisterModel userRegister)
         {
-            DataContext dal = new DataContext();
+            GASSDBContext dal = new GASSDBContext();
             dal.users.Add(new UserModel(userRegister.regFName, userRegister.regLName, userRegister.regUserName, userRegister.regEmail, userRegister.regPW,"user"));
             dal.SaveChanges();
             return RedirectToAction("Index", "Login");
@@ -31,7 +31,7 @@ namespace GASS.Controllers
         [HttpPost]
         public IActionResult LogAction(LoginModel login)
         {
-            DataContext dal = new DataContext();
+            GASSDBContext dal = new GASSDBContext();
             var stupid = dal.users.Where(x=>x.username.Equals(login.username)).ToList();
             UserModel user = stupid[0];
             HttpContext.Session.SetString("User",JsonConvert.SerializeObject(user));
