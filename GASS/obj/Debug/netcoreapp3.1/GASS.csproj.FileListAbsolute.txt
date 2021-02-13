@@ -124,4 +124,5 @@ C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\GASS.pdb
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\GASS.genruntimeconfig.cache
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.cs
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoggedIn.cshtml.g.cs
-C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\UserIndex.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Roles.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Tests\Index.cshtml.g.cs

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using GASS.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,21 +24,25 @@ namespace GASS.Controllers
         public IActionResult RegAction(UserRegisterModel userRegister)
         {
             GASSDBContext dal = new GASSDBContext();
-            dal.users.Add(new UserModel(userRegister.regFName, userRegister.regLName, userRegister.regUserName, userRegister.regEmail, userRegister.regPW,"user"));
+            dal.users.Add(new UserModel(userRegister.regFName, userRegister.regLName, userRegister.regUserName, userRegister.regEmail, Tools.GetMD5(userRegister.regPW),"user"));
             dal.SaveChanges();
             return RedirectToAction("Index", "Login");
         }
 
         [HttpPost]
-        public IActionResult LogAction(LoginModel login)
+        public IActionResult LogAction(LoginModel formInput)
         {
+            List<string> error_list = new List<string>();
             GASSDBContext dal = new GASSDBContext();
-            var stupid = dal.users.Where(x=>x.username.Equals(login.username)).ToList();
-            UserModel user = stupid[0];
-            HttpContext.Session.SetString("User",JsonConvert.SerializeObject(user));
-            HttpContext.Session.SetString("Logged", "true");
-            ViewBag.user = JsonConvert.DeserializeObject<UserModel>(HttpContext.Session.GetString("User"));
-            return RedirectToAction("Index","Panel");
+            var users = dal.users.Where(x => x.username.ToLower().Equals(formInput.username.ToLower())).ToList();
+            if (users.Count() == 1 && users[0].password.Equals(Tools.GetMD5(formInput.password))) {
+                HttpContext.Session.SetString("User", JsonConvert.SerializeObject(users[0]));
+                HttpContext.Session.SetString("logged", "true");
+                return RedirectToAction("Index", "Panel");
+            }
+            if (users.Count() == 0) error_list.Add("no_user");
+            else error_list.Add("wrong_pw");
+            return RedirectToAction("Index","Login");
         }
         public IActionResult Logout()
         {

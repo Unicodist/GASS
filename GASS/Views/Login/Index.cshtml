@@ -2,14 +2,15 @@
 <div class="row" style="margin-top: 10%;">
     <div class="col-lg-4"></div>
     <div class="col-sm-12 col-lg-4">
-        <form asp-action="LogAction" asp-controller="Login">
+        <div class="hidden">@ViewData["Demo"]</div>
+        <form asp-action="LogAction" asp-controller="Login" method="post">
             <div class="form-group">
-                <label for="inputEmail">Username</label>
-                <input name="username" type="text" class="form-control" placeholder="Username" required>
+                <label for="inputUser">Username</label>
+                <input name="username" type="text" class="form-control" id="inputUser" placeholder="Username" required>
             </div>
             <div class="form-group">
                 <label for="inputPassword">Password</label>
-                <input name="username" type="password" class="form-control" id="inputPassword" required placeholder="Password">
+                <input name="password" type="password" class="form-control" id="inputPassword" required placeholder="Password">
             </div>
             <div class="form-group">
                 <label class="form-check-label"><input type="checkbox"> Remember me</label>

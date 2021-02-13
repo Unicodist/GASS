@@ -13,10 +13,10 @@ namespace GASS.Controllers
     {
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("Logged") != "true") return RedirectToAction("Index", "Login");
+            if (HttpContext.Session.GetString("logged") != "true")
+                return RedirectToAction("Index","Login");
             UserModel user = JsonConvert.DeserializeObject<UserModel>(HttpContext.Session.GetString("User"));
-            ViewData["user"] = user.firstname;
-            if (user.role == "user") return View("~/Views/Panel/UserIndex.cshtml");
+            ViewBag.user = user;
             return View();
         }
     }
