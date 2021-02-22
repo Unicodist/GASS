@@ -1,4 +1,7 @@
 ﻿@model GASS.Models.UserRegisterModel
+@{ 
+    var errors = TempData["error_list"];
+}
 <div class="row" style="margin-top: 5%;">
     <div class="col-md-4"></div>
     <div class="col-sm-12 col-md-4">
@@ -8,18 +11,20 @@
                     <div class="form-group">
                         <label for="inFName">FirstName</label>
                         <input id="inFName" type="text" class="form-control" placeholder="FirstName" required name="regFName">
+                        <div class="invalid-feedback d-none" id="v_fn">Hello Sir!</div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="inLName">LastName</label>
                         <input id="inLName" type="text" class="form-control" placeholder="LastName" required name="regLName">
+                        <div class="invalid-feedback d-none"></div>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputUser">Username</label>
-                <input type="text" class="form-control" id="inputUser" required placeholder="UserName" name="regUsername">
+                <input autocomplete="off" type="text" class="form-control" id="inputUser" required placeholder="UserName" name="regUsername">
             </div>
             <div class="form-group">
                 <label for="inputPassword">Password</label>

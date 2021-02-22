@@ -126,3 +126,6 @@ C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoggedIn.cshtml.g.cs
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Roles.cshtml.g.cs
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Tests\Index.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Users\Upload.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Inbox\Index.cshtml.g.cs

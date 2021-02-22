@@ -1,10 +1,15 @@
-﻿using System.Security.Cryptography;
+﻿using GASS.Models;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace GASS.Controllers
 {
     public class Tools
     {
+        GASSDBContext dal = new GASSDBContext();
         public static string GetMD5(string str)
         {
             StringBuilder hash = new StringBuilder();
@@ -16,5 +21,6 @@ namespace GASS.Controllers
             }
             return hash.ToString();
         }
+        public static bool StrEmpty(string str) => str.Equals(string.Empty);
     }
 }

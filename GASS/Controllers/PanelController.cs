@@ -13,11 +13,27 @@ namespace GASS.Controllers
     {
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("logged") != "true")
-                return RedirectToAction("Index","Login");
-            UserModel user = JsonConvert.DeserializeObject<UserModel>(HttpContext.Session.GetString("User"));
-            ViewBag.user = user;
+            if (IsLogged())
+            {
+                UserModel user = JsonConvert.DeserializeObject<UserModel>(HttpContext.Session.GetString("User"));
+                ViewBag.user = user;
+                return View();
+            }
+
+            return RedirectToAction("Index", "Login");
+        }
+        public IActionResult Staffs()
+        {
+            if (GetRole().Equals("user") || !IsLogged()) return RedirectToAction("Index", "Home");
             return View();
+        }
+        public bool IsLogged()
+        {
+            return HttpContext.Session.GetString("logged") == "true";
+        }
+        public string GetRole()
+        {
+            return JsonConvert.DeserializeObject<UserModel>(HttpContext.Session.GetString("User")).role;
         }
     }
 }
