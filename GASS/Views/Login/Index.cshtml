@@ -1,7 +1,9 @@
 ﻿@model GASS.Models.LoginModel
-<div class="row" style="margin-top: 10%;">
+<link rel="stylesheet" href="~/css/style.css" />
+<div class="row">
+    <img id="pgbg" src="../images/login-background.jpg" />
     <div class="col-lg-4"></div>
-    <div class="col-sm-12 col-lg-4">
+    <div class="col-sm-12 col-lg-4 mt-5">
         <div class="hidden">@ViewData["Demo"]</div>
         <form asp-action="LogAction" asp-controller="Login" method="post">
             <div class="form-group">

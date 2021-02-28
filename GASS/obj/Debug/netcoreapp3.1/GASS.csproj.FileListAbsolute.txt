@@ -124,8 +124,10 @@ C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\GASS.pdb
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\GASS.genruntimeconfig.cache
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Index.cshtml.g.cs
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoggedIn.cshtml.g.cs
-C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Roles.cshtml.g.cs
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Tests\Index.cshtml.g.cs
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Users\Upload.cshtml.g.cs
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Inbox\Index.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Asset\Index.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Asset\Browse.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Staffs.cshtml.g.cs

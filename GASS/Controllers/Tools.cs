@@ -21,6 +21,9 @@ namespace GASS.Controllers
             }
             return hash.ToString();
         }
-        public static bool StrEmpty(string str) => str.Equals(string.Empty);
+        public static bool StrEmpty(string str)
+        {
+            return str.Equals(string.Empty);
+        }
     }
 }

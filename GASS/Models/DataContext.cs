@@ -24,6 +24,8 @@ namespace GASS.Models
 		}
 
 		public DbSet<UserModel> users { get; set; }
-		//Need to register your models here
-	}
+		public DbSet<AssetModel> assets { get; set; }
+        public DbSet<CategoryModel> category { get; set; }
+        //Need to register your models here
+    }
 }

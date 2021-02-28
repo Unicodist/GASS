@@ -14,6 +14,7 @@ namespace GASS.Controllers
         public IActionResult Index()
         {
             ViewBag.Active = "nav_login";
+            ViewData["logged"] = "false";
             return View();
         }
         public IActionResult Register()
@@ -31,7 +32,7 @@ namespace GASS.Controllers
             if (Tools.StrEmpty(userRegister.regUserName)) error_list.Add("null_uname");
             if (Tools.StrEmpty(userRegister.regEmail)) error_list.Add("null_email");
             if (Tools.StrEmpty(userRegister.regConfirm)) error_list.Add("null_confirm");
-            if (userRegister.regPW.Equals(userRegister.regConfirm)) error_list.Add("pw_mismatch");
+            if (!userRegister.regPW.Equals(userRegister.regConfirm)) error_list.Add("pw_mismatch");
             if (doUserExist.Count() > 0) error_list.Add("existing_user");
 
             if (error_list.Count > 0)
@@ -55,7 +56,8 @@ namespace GASS.Controllers
             }
             if (users.Count() == 0) error_list.Add("no_user");
             else error_list.Add("wrong_pw");
-            return RedirectToAction("Index","Home");
+            ViewBag.errors = error_list;
+            return RedirectToAction("Index","Login");
         }
         public IActionResult Logout()
         {
