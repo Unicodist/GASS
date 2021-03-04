@@ -1,13 +1,14 @@
 ﻿@model AssetUploadViewModel
 @{
     var errors = TempData["error_list"];
+    ViewData["Title"] = "Contribute as new asset...";
 }
 <link rel="stylesheet" href="../css/style.css" />
 <div id="uploadContainer" class="row mt-1">
     <img id="pgbg" src="../images/pubg_background.jpg" />
     <div class="col-md-4"></div>
     <div class="col-sm-12 col-md-4">
-        <form enctype="multipart/form-data" asp-controller="Asset" asp-action="UploadFile" autocomplete="off">
+        <form id="newAssetForm" enctype="multipart/form-data" asp-controller="Asset" asp-action="UploadFile" autocomplete="off">
             <div class="form-group">
                 <label for="inputUser">Title:</label>
                 <input type="text" class="form-control" id="assetTitle" required placeholder="Title" name="title">
@@ -47,3 +48,16 @@
     </div>
     <div class="col-md-4"></div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#newAssetForm").validate({
+            rules: {
+                title: {
+                    required: true,
+                    minlength: 5
+                },
+                assetFile: "required"
+            }
+        });
+    });
+</script>

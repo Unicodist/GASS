@@ -5,19 +5,19 @@
 <div class="row" style="margin-top: 5%;">
     <div class="col-md-4"></div>
     <div class="col-sm-12 col-md-4">
-        <form asp-controller="Login" asp-action="RegAction" autocomplete="off">
+        <form id="registrationForm" asp-controller="Login" asp-action="RegAction" autocomplete="off">
             <div class="row">
                 <div class="col">
                     <div class="form-group">
                         <label for="inFName">FirstName</label>
-                        <input id="inFName" type="text" class="form-control" placeholder="FirstName" required name="regFName">
+                        <input id="inFName" type="text" class="form-control" placeholder="FirstName" name="regFName">
                         <div class="invalid-feedback d-none" id="v_fn">Hello Sir!</div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="inLName">LastName</label>
-                        <input id="inLName" type="text" class="form-control" placeholder="LastName" required name="regLName">
+                        <input id="inLName" type="text" class="form-control" placeholder="LastName" name="regLName">
                         <div class="invalid-feedback d-none"></div>
                     </div>
                 </div>
@@ -28,24 +28,73 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">#</span>
                     </div>
-                    <input name="regUserName" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    <input id="inputUsername" name="regUserName" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </div>
             <div class="form-group">
                 <label for="inputPassword">Password</label>
-                <input type="password" class="form-control" id="inputPassword" required placeholder="Password" name="regPW">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="regPW">
             </div>
             <div class="form-group">
                 <label for="confirmPassword">Confirm</label>
-                <input type="password" class="form-control" id="confirmPassword" required placeholder="Confirm" name="regConfirm">
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm" name="regConfirm">
             </div>
             <div class="form-group">
                 <label for="inputEmail">Email</label>
-                <input type="email" class="form-control" id="inputEmail" required placeholder="E-Mail" name="regEmail">
+                <input type="email" class="form-control" id="inputEmail" placeholder="E-Mail" name="regEmail">
             </div>
             <button type="submit" class="btn btn-primary">Sign up</button>
         </form>
     </div>
     <div class="col-md-4"></div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#registrationForm").validate({
+            rules: {
+                regFName: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 20
+                },
+                regLName: {
+                    required: true,
+                    minlength: 2,
+                    maxlength: 20
+                },
+                regUserName: {
+                    required: true,
+                    minlength: 6,
+                    maxlength: 20
+                },
+                regPw: {
+                    required: true,
+                    minlength: 8,
+                    maxlength: 32
+                },
+                regConfirm: {
+                    equalTo: "#inputPassword"
+                },
+                regEmail: {
+                    required: true,
+                    email: true
+                }
+            },
+            /*messages: {
+                regFName: {
+                    required: "We've never had a person with no first name, and it's staying that way",
+                    minlength: "How do I even pronounce it? enter at least two characters"
+                },
+                regLName: {
+                    required: "We've never had a person with no last name, and it's staying that way",
+                    minlength: "How do I even pronounce it? enter at least two characters"
+                },
+                regUserName: {
+                    required: "Don't waste your chance to choose a dope username :D",
+                    minlength: "Can't be that short, enter at least 6 characters"
+                }
+            }*/
+        });
+    })
+</script>
 

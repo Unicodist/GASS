@@ -10,8 +10,9 @@ namespace GASS.Controllers
     public class SearchController : Controller
     {
         GASSDBContext dal = new GASSDBContext();
-        public IActionResult Index(string q)
+        public IActionResult Index(string key)
         {
+            ViewData["keyword"] = key;
             List<AssetModel> assets = dal.assets.ToList();
             ViewBag.assetlist = assets;
             return View();

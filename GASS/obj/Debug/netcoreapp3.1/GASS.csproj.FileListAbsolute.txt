@@ -131,3 +131,5 @@ C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Inbox\Index.cshtml.g.
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Asset\Index.cshtml.g.cs
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Asset\Browse.cshtml.g.cs
 C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Panel\Staffs.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Users\List.cshtml.g.cs
+C:\HtmlFiles\GASS\GASS\obj\Debug\netcoreapp3.1\Razor\Views\Users\Edit.cshtml.g.cs

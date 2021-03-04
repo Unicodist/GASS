@@ -51,12 +51,12 @@ namespace GASS.Controllers
             var users = dal.users.Where(x => x.username.ToLower().Equals(formInput.username.ToLower())).ToList();
             if (users.Count() == 1 && users[0].password.Equals(Tools.GetMD5(formInput.password))) {
                 HttpContext.Session.SetString("User", JsonConvert.SerializeObject(users[0]));
-                HttpContext.Session.SetString("logged", "true");
+                HttpContext.Session.SetString("Logged", "true");
                 return RedirectToAction("Index", "Panel");
             }
             if (users.Count() == 0) error_list.Add("no_user");
             else error_list.Add("wrong_pw");
-            ViewBag.errors = error_list;
+            TempData["error_list"] = error_list;
             return RedirectToAction("Index","Login");
         }
         public IActionResult Logout()

@@ -33,11 +33,19 @@ namespace GASS.Controllers
         }
         public bool IsLogged()
         {
-            return HttpContext.Session.GetString("logged") == "true";
+            return HttpContext.Session.GetString("Logged") == "true";
         }
         public string GetRole()
         {
             return JsonConvert.DeserializeObject<UserModel>(HttpContext.Session.GetString("User")).role;
+        }
+        public IActionResult ChangeRole(string role, int id = -1)
+        {
+            if (id == -1) return RedirectToAction("Index", "Home");
+            var user = dal.users.Find(id);
+            user.role = role;
+            dal.SaveChanges();
+            return RedirectToAction("Staffs");
         }
     }
 }

@@ -13,10 +13,12 @@ namespace GASS.Controllers
         
         public IActionResult Index()
         {
+
             return View();
         }
-        public IActionResult Browse(int id)
+        public IActionResult Browse(int id = -1)
         {
+            if (id == -1) return RedirectToAction("Index", "Home");
             GASSDBContext dal = new GASSDBContext();
             AssetModel asset = dal.assets.Find(id);
             ViewBag.asset = asset;

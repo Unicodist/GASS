@@ -15,6 +15,5 @@ namespace GASS.Models
         public int down_count { get; set; }
         public float price { get; set; }
         public float rating { get; set; }
-        public string filePath { get; set; }
     }
 }
