@@ -9,4 +9,10 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\UserData\assetFiles\" />
+    <Folder Include="wwwroot\UserData\AssetScreenShots\" />
+    <Folder Include="wwwroot\UserData\PFPs\" />
+  </ItemGroup>
+
 </Project>

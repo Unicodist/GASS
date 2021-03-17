@@ -13,8 +13,8 @@
                     <td>@item.firstname @item.lastname</td>
                     <td>@item.username</td>
                     <td title="Ban user"><button class="btn btn-outline-danger"><i class="text-secondary fas fa-hammer"></i></button></td>
-                    <td title="Demote to Moderator"><button class="btn btn-outline-danger"><i class="text-secondary fas fa-thumbs-down"></i></button></td>
-                    <td title="Demote to User"><button class="btn btn-outline-danger"><i class="text-secondary fas fa-user"></i></button></td>
+                    <td title="Demote to Moderator"><a asp-action="ChangeRole" asp-route-id="@item.id" asp-route-role="mod" class="btn btn-outline-danger"><i class="text-secondary fas fa-thumbs-down"></i></a></td>
+                    <td title="Demote to User"><a asp-action="ChangeRole" asp-route-id="@item.id" asp-route-role="user" class="btn btn-outline-danger"><i class="text-secondary fas fa-user"></i></a></td>
                 </tr>
             }
         </table>

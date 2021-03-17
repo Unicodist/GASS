@@ -8,10 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GASS.Controllers
 {
-    public class AssetController : Controller
+    public class AssetsController : Controller
     {
         
-        public IActionResult Index()
+        public IActionResult Category(string id="new")
         {
 
             return View();
