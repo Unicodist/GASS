@@ -46,5 +46,10 @@ namespace GASS.Controllers
         {
             return View();
         }
+        public IActionResult CheckRoles(int id)
+        {
+            UserModel user = dal.users.SingleOrDefault(x => x.id.Equals(id));
+            return Content(user.role);
+        }
     }
 }

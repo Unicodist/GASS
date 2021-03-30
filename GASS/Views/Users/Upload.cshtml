@@ -4,11 +4,40 @@
     ViewData["Title"] = "Contribute as new asset...";
 }
 <link rel="stylesheet" href="../css/style.css" />
+<style>
+    #modalForeground{
+        display:flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+</style>
+<div class="modal" id="myModal">
+    <div class="modal-dialo" id="modalForeground">
+        <div class="modal-content text-dark w-auto">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add a new Category</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <label>Enter category name:</label>
+                <input type="text" class="input-group" id="addCatTitle"/>
+                <label>Description:</label>
+                <textarea type="text" class="input-group" id="addCatDes"></textarea>
+                <button class="btn btn-primary mt-1" id="addBtn">Add</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 <div id="uploadContainer" class="row mt-1">
     <img id="pgbg" src="../images/pubg_background.jpg" />
     <div class="col-md-4"></div>
     <div class="col-sm-12 col-md-4">
-        <form id="newAssetForm" enctype="multipart/form-data" asp-controller="Asset" asp-action="UploadFile" autocomplete="off">
+        <form id="newAssetForm" enctype="multipart/form-data" asp-controller="Assets" asp-action="UploadAssetAction" autocomplete="off">
             <div class="form-group">
                 <label for="inputUser">Title:</label>
                 <input type="text" class="form-control" id="assetTitle" required placeholder="Title" name="title">
@@ -29,7 +58,7 @@
                         }
                     </select>
                     <div class="input-group-append">
-                        <button class="input-group-text fas fa-plus" id="basic-addon1"></button>
+                        <button class="input-group-text fas fa-plus" id="add_description" type="button"></button>
                     </div>
                 </div>
             </div>
@@ -49,6 +78,8 @@
     <div class="col-md-4"></div>
 </div>
 <script>
+
+
     $(document).ready(function () {
         $("#newAssetForm").validate({
             rules: {
@@ -63,5 +94,31 @@
                 assetFile: "required"
             }
         });
+    });
+
+    $("#add_description").click(function () {
+        $("#myModal").modal();
+    });
+
+    $("#addBtn").click(function () {
+        var t = $("#addCatTitle").val();
+        var d = $("#addCatDes").val();
+        $.ajax({
+            type: "POST",
+            url: "/assets/uploadcat",
+            data: { title: t, description: d},
+            success: function (data) {
+                if (data == "good") {
+                    alert("New category " + t + " is added successfully!");
+
+                }
+                else {
+                    alert("Error accured while adding a new Category");
+                }
+            },
+            error: function () {
+                alert("Error accured while adding a new Category");
+            }
+        })
     });
 </script>
