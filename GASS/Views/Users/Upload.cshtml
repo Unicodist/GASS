@@ -36,7 +36,7 @@
 <div id="uploadContainer" class="row mt-1">
     <img id="pgbg" src="../images/pubg_background.jpg" />
     <div class="col-md-4"></div>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-6">
         <form id="newAssetForm" enctype="multipart/form-data" asp-controller="Assets" asp-action="UploadAssetAction" autocomplete="off">
             <div class="form-group">
                 <label for="inputUser">Title:</label>
@@ -49,14 +49,13 @@
             <div class="form-group">
                 <label>Select Category(s)</label>
                 <div class="input-group mb-3">
-                    <select class="form-control">
-                        @{
-                            foreach (var item in ViewBag.game_categories)
-                            {
-                                <option value="@item.id" title="@item.category_description">@item.category_name</option>
-                            }
+                    <input id="cat" list="categoryList" type="text" class="form-control" />
+                    <datalist id="categoryList">
+                        @foreach(var item in ViewBag.game_categories)
+                        {
+                            <option value="@item.category_name" title="@item.category_description"></option>
                         }
-                    </select>
+                    </datalist>
                     <div class="input-group-append">
                         <button class="input-group-text fas fa-plus" id="add_description" type="button"></button>
                     </div>
@@ -78,8 +77,6 @@
     <div class="col-md-4"></div>
 </div>
 <script>
-
-
     $(document).ready(function () {
         $("#newAssetForm").validate({
             rules: {
@@ -96,6 +93,10 @@
         });
     });
 
+    function errorCase() {
+        alert("Error accured while adding a new Category");
+    }
+
     $("#add_description").click(function () {
         $("#myModal").modal();
     });
@@ -108,16 +109,19 @@
             url: "/assets/uploadcat",
             data: { title: t, description: d},
             success: function (data) {
-                if (data == "good") {
-                    alert("New category " + t + " is added successfully!");
-
-                }
-                else {
-                    alert("Error accured while adding a new Category");
+                data = JSON.parse(data);
+                switch (data) {
+                    case "error": {
+                        errorCase();
+                    }
+                    default: {
+                        var catAppend = "<option value='" + data.category_name + "'></option>";
+                        $("#categoryList").append(catAppend);
+                    }
                 }
             },
             error: function () {
-                alert("Error accured while adding a new Category");
+                errorCase();
             }
         })
     });
