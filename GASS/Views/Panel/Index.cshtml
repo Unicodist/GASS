@@ -1,6 +1,5 @@
 ﻿@{
     ViewData["Title"] = "Dashboard";
-    Layout = "_LoggedIn";
 }
 <style>
     .jumbotron {
@@ -61,7 +60,7 @@
     <div class="bg-light">
         <div class="row">
             <div class="text-center col-3 mt-4">
-                <a asp-controller="Users" asp-action="Upload" style="text-decoration:none">
+                <a asp-controller="Assets" asp-action="Upload" style="text-decoration:none">
                     <div class="card">
                         <i class="fas fa-plus card-header"></i>
                         <div class="card-body text-dark">Add a new Asset</div>

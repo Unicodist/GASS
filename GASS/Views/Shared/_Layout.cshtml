@@ -8,67 +8,73 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/fontawesome/css/all.css">
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <style>
-        .error {
-            color: orangered;
-        }
-    </style>
 </head>
 <body class="bg-dark text-light">
     <header style="border-bottom: 1px white solid;">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            @Html.ActionLink("GameBrick","Index","Home",null,new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        @Html.ActionLink("Home", "Index", "Home", null, new { @class = "nav-link" })
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-controller="Assets" asp-action="Category" asp-route-id="2D">2D</a>
+                        <a class="nav-link" href="#">Link</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Assets" asp-action="Category" asp-route-id="3D">3D</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Assets" asp-action="Category" asp-route-id="audio">Audio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Assets" asp-action="Category" asp-route-id="gui">GUI</a>
-                    </li>
+                    <!--<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </li>-->
                 </ul>
-                <form class="form-inline my-2 my-lg-0" asp-controller="Search" asp-action="Index" method="get">
-                    <div class="input-group my-auto">
-                        <input type="search" class="form-control" placeholder="Search for assets...">
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-secondary fas fa-search" type="submit"></button>
-                        </div>
-                    </div>
+                
+                <form class="form-inline my-2 my-lg-0 mr-1" asp-controller="Search" asp-action="Index">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form>
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <div class="btn-group">
-                            <a class="nav-link btn btn-success" asp-controller="Login" asp-action="Index">Login</a>
-                            <a class="nav-link btn btn-outline-success" asp-controller="Login" asp-action="Register">Sign Up</a>
-                        </div>
-                    </li>
-                </ul>
             </div>
         </nav>
     </header>
-    <div class="container-fluid">
+    <div class="container" style="margin-bottom:200px; background:rgba(0 255 255 0.5);">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - GASS - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    <footer class="footer" style="display:flex; justify-content:space-around;">
+        <h3 class="align-self-center">GameBrick</h3>
     </footer>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function isLogged() {
+            $.get("/Panel/IsLogged", null, function (data) {
+                if (data == "true") {
+                    $('#navbarSupportedContent').append("<a href='/Login/Logout' class='btn btn-danger'>Logout</a>");
+                }
+                else {
+                    $('#navbarSupportedContent').append("<div class='nav-item btn-group mr-1'><a class='btn btn-primary' href='Login/Index' > Login</a ><a href='/Login/Register' class='btn btn-secondary'>Register</a></div >");
+                }
+            });
+        }
+        //All the navigation controls are handled here
+        function getRole() {
+            $.get("/Panel/GetRole", null, function (data) {
+                alert(data);
+            });
+        }
+
+        isLogged();
+        
+    </script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     @RenderSection("Scripts", required: false)

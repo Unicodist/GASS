@@ -10,7 +10,8 @@ namespace GASS.Models
     {
         public string title { get; set; }
         public string description { get; set; }
-        public float price { get; set; }
+        public float priceTag { get; set; }
+        public string tags { get; set; }
         public IFormFile assetFile { get; set; }
     }
 }

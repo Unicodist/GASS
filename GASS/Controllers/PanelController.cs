@@ -14,7 +14,7 @@ namespace GASS.Controllers
         GASSDBContext dal = new GASSDBContext();
         public IActionResult Index()
         {
-            if (IsLogged())
+            if (IsLogged()=="true")
             {
                 UserModel user = JsonConvert.DeserializeObject<UserModel>(HttpContext.Session.GetString("User"));
                 ViewBag.user = user;
@@ -31,9 +31,9 @@ namespace GASS.Controllers
             ViewBag.userlist = dal.users.Where(x => x.role.Equals("user")).Take(50).ToList();
             return View();
         }
-        public bool IsLogged()
+        public string IsLogged()
         {
-            return HttpContext.Session.GetString("Logged") == "true";
+            return HttpContext.Session.GetString("Logged");
         }
         public string GetRole()
         {

@@ -1,0 +1,233 @@
+﻿@model AssetUploadViewModel
+@{
+    var errors = TempData["error_list"];
+    ViewData["Title"] = "Contribute as new asset...";
+}
+<link rel="stylesheet" href="../css/style.css" />
+<style>
+    #modalForeground {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #priceLabels{
+        display:flex;
+    }
+
+    .tag-input {
+        border: 1px solid black;
+        display: block;
+        padding: 5px;
+    }
+
+        .tag-input #tag-group {
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            overflow-wrap: break-word;
+        }
+
+            .tag-input #tag-group .tag {
+                border-radius: 5rem;
+                margin: 0 5px;
+                height: 20px;
+                background-color: #696969;
+                color: whitesmoke;
+                padding: 3px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                align-items: center;
+                font-size: 12px;
+            }
+
+                .tag-input #tag-group .tag i {
+                    margin-left: 2px;
+                    height: 100%;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-align: center;
+                    -ms-flex-align: center;
+                    align-items: center;
+                    cursor: pointer;
+                }
+
+                    .tag-input #tag-group .tag i:hover {
+                        background-color: red;
+                    }
+
+        .tag-input input[type=text] {
+            border: none;
+            height: 100%;
+        }
+    /*# sourceMappingURL=style.css.map */
+</style>
+<div class="modal" id="myModal">
+    <div class="modal-dialo" id="modalForeground">
+        <div class="modal-content text-dark w-auto">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add a new Category</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <label>Enter category name:</label>
+                <input type="text" class="input-group" id="addCatTitle" />
+                <label>Description:</label>
+                <textarea type="text" class="input-group" id="addCatDes"></textarea>
+                <button class="btn btn-primary mt-1" id="addBtn">Add</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div id="uploadContainer" class="row mt-1">
+    <img id="pgbg" src="../images/pubg_background.jpg" />
+    <div class="col-md-4"></div>
+    <div class="col-sm-12 col-md-6">
+        <form id="newAssetForm" enctype="multipart/form-data" asp-controller="Assets" asp-action="UploadAssetAction" autocomplete="off">
+            <div class="form-group">
+                <label for="inputUser">Title:</label>
+                <input type="text" class="form-control" id="assetTitle" required placeholder="Title" name="title">
+            </div>
+            <div class="form-group">
+                <label for="inpDesc">Description</label>
+                <textarea rows="10" class="form-control" id="inpDesc" placeholder="Tell us about your assets" name="description"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Select Category(s)</label>
+                <div class="tag-input">
+                    <div id="tag-group">
+                    </div>
+                    <input id="data" type="hidden" name="tags" class="form-control" />
+                    <input id="cat" list="categoryList" type="text" class="form-control" />
+                </div>
+                <datalist id="categoryList">
+                    @foreach (var item in ViewBag.game_categories)
+                    {
+                        <option value="@item.category_name" title="@item.category_description"></option>
+                    }
+                </datalist>
+            </div>
+            <div class="form-group">
+                <label>Choose your zip file</label>
+                <input type="file" class="form-control-file" name="assetFile" accept=".zip">
+            </div>
+            <div class="form-group">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="switch1" name="price">
+                    <label class="custom-control-label" for="switch1">Add price</label>
+                </div>
+            </div>
+            <div id="prices" class="form-group d-none">
+                <div id="priceRads">
+                    <input type="radio" value="0" class="btn-check" name="priceTag" id="option1" autocomplete="off" checked />
+                    <input type="radio" value="10" class="btn-check" name="priceTag" id="option2" autocomplete="off" checked />
+                    <input type="radio" value="20" class="btn-check" name="priceTag" id="option3" autocomplete="off" />
+                </div>
+                <div class="btn-group-lg d-flex">
+                    <div id="priceLabels" class="btn-group-lg">
+                        <label class="btn btn-light btn-dark pr_label" for="option1">$0</label>
+
+                        <label class="btn btn-light pr_label" for="option2">$10</label>
+
+                        <label class="btn btn-light pr_label" for="option3">$20</label>
+
+                        <input id='customPriceEntry' type='number' class='form-control d-none' />
+                    </div>
+                    <label id="customPriceTrigger" class="btn btn-light">Custom</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Contribute</button>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+<!-- form validator -->
+<script>
+    $(document).ready(function () {
+        $("#newAssetForm").validate({
+            rules: {
+                title: {
+                    required: true,
+                    minlength: 5
+                },
+                description: {
+                    required: true,
+                    minlength: 15
+                },
+                assetFile: "required"
+            }
+        });
+    });
+</script>
+<!-- hide and show price labels -->
+<script>
+    $('#switch1').change(
+        function () {
+            if ($(this).is(':checked')) {
+                $('#prices').removeClass('d-none');
+            }
+            else {
+                $('#prices').addClass('d-none');
+                $("#option1").attr('checked', 'checked');
+            }
+        });
+</script>
+<!--change colors of price buttons-->
+<script>
+    $(document).on('click','.pr_label',function () {
+        $('.pr_label').removeClass('btn-dark');
+        $(this).addClass('btn-dark');
+    });
+</script>
+<!-- Description handler -->
+<script>
+    var tagList = new Set(); //using set to avoid duplicate category entries
+    $(document).on("click", ".close-tag", function () {
+        $(this).parent('div').remove();
+        tagList.delete($(this).siblings('span').text());
+        $('#data').val(Array.from(tagList).join(','));
+    });
+
+    //following is what happens when a new description is added
+    $("#cat").keypress(function (event) {
+        if (event.key == ',' || event.key == ' ' || event.key == 'Enter') {
+            event.preventDefault();
+            var newTag = $('#cat').val();
+            tagList.add(newTag);
+            $('#data').val(Array.from(tagList).join(','));
+            $('#tag-group').html('');
+            tagList.forEach(a => {
+                $("#tag-group").append("<div class='tag'><span>" + a + "</span><i class='fa fa-times close-tag'></i></div>");
+            });
+            $("#cat").val('');
+        }
+    });
+</script>
+<!--Custom Price label-->
+<script>
+    $(document).on('click', '#customPriceTrigger', function () {
+        $('#customPriceEntry').toggleClass('d-none')
+    });
+
+    $(document).on('keypress', '#customPriceEntry', function (event) {
+        if (event.key == 'Enter') {
+            event.preventDefault();
+            $('#customRad').remove();
+            $('#customPriceLabel').remove();
+            $('#priceRads').append("<input type='radio' value='" + $('#customPriceEntry').val() + "' class='btn-check' name='priceTag' id='customRad' autocomplete='off' />");
+            $('#priceLabels').append("<label style='display:none;' id='customPriceLabel' for='customRad' class='btn btn-light pr_label'>$" + $('#customPriceEntry').val() + "</label>");
+            $('#customPriceLabel').show('slow');
+            $(this).remove();
+            $('#customPriceLabel').click();
+        }
+    });
+</script>

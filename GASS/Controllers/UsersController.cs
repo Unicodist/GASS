@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GASS.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GASS.Controllers
@@ -14,12 +15,7 @@ namespace GASS.Controllers
         {
             return View();
         }
-        public IActionResult Upload()
-        {
-            List<CategoryModel> categories = dal.category.ToList();
-            ViewBag.game_categories = categories;
-            return View();
-        }
+        
         public IActionResult List()
         {
             ViewBag.accountlist = dal.users.ToList();

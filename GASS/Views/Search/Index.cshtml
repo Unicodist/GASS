@@ -1,19 +1,9 @@
 ﻿<p class="text-center h4">@ViewData["keyword"] related AssetPacks</p>
-<div class="row text-dark">
+<div class="row text-light">
     @{ 
         foreach(var item in ViewBag.assetlist)
         {
-            <div class="col-md-3 col-sm-6 col-lg mt-3">
-                <a asp-Controller="Asset" asp-action="Browse" asp-route-key="@item.id" style="color:black; text-decoration:none;">
-                    <div class="card bg-dark text-light border-light" style="height:400px;">
-                        <img class="card-img-top d-none d-sm-block" src="../images/assetImg.jpg" style="background-size:cover;"/>
-                        <div class="card-body">
-                            <p class="card-title h5">@item.title</p>
-                            <p class="card-text">@item.description</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            <div>@item.title</div>
         }
     }
 </div>
